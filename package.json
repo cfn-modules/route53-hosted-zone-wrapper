@@ -1,0 +1,16 @@
+{
+  "name": "@cfn-modules/route53-hosted-zone-wrapper",
+  "version": "1.0.0",
+  "description": "AWS Route53 hosted zone wrapper for existing zones",
+  "author": "Michael Wittig <michael@widdix.de>",
+  "license": "Apache-2.0",
+  "keywords": ["cfn-modules", "cfn-modules:HostedZone"],
+  "homepage": "https://github.com/cfn-modules",
+  "bugs": {
+    "url": "https://github.com/cfn-modules/route53-hosted-zone-wrapper/issues"
+  },
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/cfn-modules/route53-hosted-zone-wrapper.git"
+  }
+}

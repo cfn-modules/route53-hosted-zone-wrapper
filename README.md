@@ -43,8 +43,15 @@ Resources:
   </thead>
   <tbody>
     <tr>
+      <td>Id</td>
+      <td>The id of the hosted zone</td>
+      <td></td>
+      <td>yes</td>
+      <td></td>
+    </tr>
+    <tr>
       <td>Name</td>
-      <td>The name of the domain (hosted zone)</td>
+      <td>The name of the hosted zone</td>
       <td></td>
       <td>yes</td>
       <td></td>

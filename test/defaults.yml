@@ -2,10 +2,15 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Description: 'cfn-modules test'
 Resources:
+  RealHostedZone:
+    Type: 'AWS::CloudFormation::Stack'
+    Properties:
+      Parameters:
+        Name: 'widdix.net'
+      TemplateURL: './node_modules/@cfn-modules/route53-hosted-zone-public/module.yml'
   HostedZone:
     Type: 'AWS::CloudFormation::Stack'
     Properties:
       Parameters:
-        Id: 'ZQ9I4T2TI3HJ5'
-        Name: 'widdix.net'
+        Id: !GetAtt 'RealHostedZone.Outputs.Id'
       TemplateURL: './node_modules/@cfn-modules/route53-hosted-zone-wrapper/module.yml'

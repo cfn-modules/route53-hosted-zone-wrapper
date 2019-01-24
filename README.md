@@ -25,7 +25,6 @@ Resources:
     Properties:
       Parameters:
         Id: 'ZQ9I4T2TI3HJ5' # required
-        Name: 'widdix.net' # required
       TemplateURL: './node_modules/@cfn-modules/route53-hosted-zone-wrapper/module.yml'
 ```
 
@@ -45,13 +44,6 @@ Resources:
     <tr>
       <td>Id</td>
       <td>The id of the hosted zone</td>
-      <td></td>
-      <td>yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>Name</td>
-      <td>The name of the hosted zone</td>
       <td></td>
       <td>yes</td>
       <td></td>

@@ -1,9 +1,10 @@
 {
   "name": "@cfn-modules/route53-hosted-zone-wrapper",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "AWS Route53 hosted zone wrapper for existing zones",
   "author": "Michael Wittig <michael@widdix.de>",
   "license": "Apache-2.0",
+  "bundledDependencies": ["@cfn-modules/lambda-function"],
   "keywords": ["cfn-modules", "cfn-modules:HostedZone"],
   "homepage": "https://github.com/cfn-modules",
   "bugs": {

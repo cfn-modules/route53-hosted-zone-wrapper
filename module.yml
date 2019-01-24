@@ -19,18 +19,36 @@ Parameters:
   Id:
     Description: 'The id of the hosted zone.'
     Type: String
-  Name:
-    Description: 'The name of the hosted zone (e.g., widdix.net).'
-    Type: String
 Resources:
-  Dummy: # CloudFormation stacks must have at least one resource
-    Type: 'AWS::S3::Bucket'
-    Properties: {}
+  HostedZoneDetailsFunctionPolicy:
+    Type: 'AWS::IAM::ManagedPolicy'
+    Properties:
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action: 'route53:GetHostedZone'
+          Resource: '*'
+  HostedZoneDetailsFunction:
+    Type: 'AWS::CloudFormation::Stack'
+    Properties:
+      Parameters:
+        Handler: 'custom-resource.handler'
+        Runtime: 'nodejs8.10'
+        Timeout: '60'
+        ManagedPolicyArns: !Ref HostedZoneDetailsFunctionPolicy
+      TemplateURL: './node_modules/@cfn-modules/lambda-function/module.yml'
+  HostedZoneDetails:
+    Type: 'Custom::HostedZoneDetails'
+    Version: '1.0'
+    Properties:
+      HostedZoneId: !Ref Id
+      ServiceToken: !GetAtt 'HostedZoneDetailsFunction.Outputs.Arn'
 Outputs:
   ModuleId:
     Value: 'route53-hosted-zone-wrapper'
   ModuleVersion:
-    Value: '1.0.0'
+    Value: '1.1.0'
   StackName:
     Value: !Ref 'AWS::StackName'
   Id:
@@ -38,6 +56,6 @@ Outputs:
     Export:
       Name: !Sub '${AWS::StackName}-Id'
   Name:
-    Value: !Ref Name
+    Value: !GetAtt 'HostedZoneDetails.Name'
     Export:
       Name: !Sub '${AWS::StackName}-Name'

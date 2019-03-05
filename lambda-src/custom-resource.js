@@ -19,7 +19,7 @@ exports.handler = (event, context, cb) => {
       } else {
         response.send(event, context, response.SUCCESS, {
           Name: data.HostedZone.Name
-        });
+        }, event.ResourceProperties.HostedZoneId);
       }
     });
   } else {

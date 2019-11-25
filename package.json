@@ -1,6 +1,6 @@
 {
   "name": "@cfn-modules/route53-hosted-zone-wrapper",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "AWS Route53 hosted zone wrapper for existing zones",
   "author": "Michael Wittig <michael@widdix.de>",
   "license": "Apache-2.0",

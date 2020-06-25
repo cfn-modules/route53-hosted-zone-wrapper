@@ -8,6 +8,13 @@
     "@cfn-modules/route53-hosted-zone-public": "1.0.0"
   },
   "scripts": {
-    "test": "eslint . && ava -c 4 *.js"
+    "test": "eslint . && ava"
+  },
+  "ava": {
+    "files": [
+      "*.js"
+    ],
+    "concurrency": 4,
+    "timeout": "2h" 
   }
 }

@@ -18,7 +18,7 @@ exports.handler = (event, context, cb) => {
         error(err);
       } else {
         response.send(event, context, response.SUCCESS, {
-          Name: data.HostedZone.Name
+          Name: data.HostedZone.Name.replace(/\.$/, '')
         }, event.ResourceProperties.HostedZoneId);
       }
     });

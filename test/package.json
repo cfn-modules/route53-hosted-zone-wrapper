@@ -1,8 +1,8 @@
 {
   "private": true,
   "dependencies": {
-    "eslint": "6.6.0",
-    "ava": "2.4.0",
+    "eslint": "7.3.1",
+    "ava": "3.9.0",
     "@cfn-modules/test": "0.7.3",
     "@cfn-modules/route53-hosted-zone-wrapper": "file:../",
     "@cfn-modules/route53-hosted-zone-public": "1.0.0"

@@ -15,6 +15,6 @@
       "*.js"
     ],
     "concurrency": 4,
-    "timeout": "2h" 
+    "timeout": "2h"
   }
 }

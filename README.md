@@ -1,6 +1,3 @@
-[![Build Status](https://travis-ci.org/cfn-modules/route53-hosted-zone-wrapper.svg?branch=master)](https://travis-ci.org/cfn-modules/route53-hosted-zone-wrapper)
-[![NPM version](https://img.shields.io/npm/v/@cfn-modules/route53-hosted-zone-wrapper.svg)](https://www.npmjs.com/package/@cfn-modules/route53-hosted-zone-wrapper)
-
 # cfn-modules: AWS Route53 hosted zone (wrapper)
 
 AWS Route53 hosted zone wrapper for existing zones.

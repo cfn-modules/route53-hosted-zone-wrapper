@@ -1,8 +1,6 @@
-const AWS = require('aws-sdk');
 const response = require('cfn-response');
 const { Route53Client, GetHostedZoneCommand } = require('@aws-sdk/client-route-53');
 const route53 = new Route53Client({apiVersion: '2012-11-05'});
-
 
 
 exports.handler = (event, context, cb) => {

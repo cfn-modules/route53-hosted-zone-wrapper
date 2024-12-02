@@ -1,6 +1,9 @@
 const AWS = require('aws-sdk');
 const response = require('cfn-response');
-const route53 = new AWS.Route53({apiVersion: '2013-04-01'});
+const { Route53Client, GetHostedZoneCommand } = require('@aws-sdk/client-route-53');
+const route53 = new Route53Client({apiVersion: '2012-11-05'});
+
+
 
 exports.handler = (event, context, cb) => {
   console.log(JSON.stringify(event));
@@ -11,9 +14,9 @@ exports.handler = (event, context, cb) => {
   if (event.RequestType === 'Delete') {
     response.send(event, context, response.SUCCESS);
   } else if (event.RequestType === 'Create' || event.RequestType === 'Update') {
-    route53.getHostedZone({
+    route53.send(new GetHostedZoneCommand({
       Id: event.ResourceProperties.HostedZoneId
-    }, (err, data) => {
+    }), (err, data) => {
       if (err) {
         error(err);
       } else {

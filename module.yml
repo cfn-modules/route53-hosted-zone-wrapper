@@ -34,7 +34,7 @@ Resources:
     Properties:
       Parameters:
         Handler: 'custom-resource.handler'
-        Runtime: 'nodejs16.x'
+        Runtime: 'nodejs22.x'
         Timeout: '60'
         ManagedPolicyArns: !Ref HostedZoneDetailsFunctionPolicy
       TemplateURL: './node_modules/@cfn-modules/lambda-function/module.yml'

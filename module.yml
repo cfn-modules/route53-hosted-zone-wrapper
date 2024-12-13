@@ -48,7 +48,7 @@ Outputs:
   ModuleId:
     Value: 'route53-hosted-zone-wrapper'
   ModuleVersion:
-    Value: '1.8.1'
+    Value: '1.10.1'
   StackName:
     Value: !Ref 'AWS::StackName'
   Id:

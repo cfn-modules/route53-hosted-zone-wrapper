@@ -45,27 +45,23 @@ async function cfnCustomResourceFailed(event, physicalResourceId, optionalReason
   }
 }
 
-exports.handler = (event, context, cb) => {
+exports.handler = async (event, context, cb) => {
   console.log(JSON.stringify(event));
-  const error = (err) => {
+  try {
+    if (event.RequestType === 'Delete') {
+      await cfnCustomResourceSuccess(event, event.ResourceProperties.HostedZoneId);
+    } else if (event.RequestType === 'Create' || event.RequestType === 'Update') {
+      route53.send(new GetHostedZoneCommand({
+        Id: event.ResourceProperties.HostedZoneId
+      }));
+      await cfnCustomResourceSuccess(event, event.ResourceProperties.HostedZoneId, {
+        Name: data.HostedZone.Name.replace(/\.$/, '')
+      });
+    } else {
+      error(new Error(`unsupported request type: ${event.RequestType}`));
+    }
+  } catch(err) {
     console.log(JSON.stringify(err));
-    cfnCustomResourceFailed(event);
-  };
-  if (event.RequestType === 'Delete') {
-    cfnCustomResourceSuccess(event, event.ResourceProperties.HostedZoneId);
-  } else if (event.RequestType === 'Create' || event.RequestType === 'Update') {
-    route53.send(new GetHostedZoneCommand({
-      Id: event.ResourceProperties.HostedZoneId
-    }), (err, data) => {
-      if (err) {
-        error(err);
-      } else {
-        cfnCustomResourceSuccess(event, event.ResourceProperties.HostedZoneId, {
-          Name: data.HostedZone.Name.replace(/\.$/, '')
-        });
-      }
-    });
-  } else {
-    error(new Error(`unsupported request type: ${event.RequestType}`));
+    await cfnCustomResourceFailed(event);
   }
 };

@@ -61,7 +61,7 @@ exports.handler = async (event, context, cb) => {
       error(new Error(`unsupported request type: ${event.RequestType}`));
     }
   } catch(err) {
-    console.log(JSON.stringify(err));
-    await cfnCustomResourceFailed(err);
+    console.log(err);
+    await cfnCustomResourceFailed(event, event.ResourceProperties.HostedZoneId, err);
   }
 };

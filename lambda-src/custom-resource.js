@@ -51,7 +51,7 @@ exports.handler = async (event, context, cb) => {
     if (event.RequestType === 'Delete') {
       await cfnCustomResourceSuccess(event, event.ResourceProperties.HostedZoneId);
     } else if (event.RequestType === 'Create' || event.RequestType === 'Update') {
-      await route53.send(new GetHostedZoneCommand({
+      const data = await route53.send(new GetHostedZoneCommand({
         Id: event.ResourceProperties.HostedZoneId
       }));
       await cfnCustomResourceSuccess(event, event.ResourceProperties.HostedZoneId, {

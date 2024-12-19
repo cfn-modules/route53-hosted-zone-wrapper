@@ -62,6 +62,6 @@ exports.handler = async (event, context, cb) => {
     }
   } catch(err) {
     console.log(JSON.stringify(err));
-    await cfnCustomResourceFailed(event);
+    await cfnCustomResourceFailed(err);
   }
 };
